@@ -1,0 +1,64 @@
+{
+  "name": "most-utils",
+  "description": "RX utility functions for Most.js",
+  "version": "1.0.2",
+  "main": "lib/index.js",
+  "module": "lib.es2015/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "typings": "lib/index.d.ts",
+  "license": "MIT",
+  "author": "blindproj",
+  "homepage": "https://github.com/blindproj/most-utils#readme",
+  "bugs": {
+    "url": "https://github.com/blindproj/most-utils/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blindproj/most-utils.git"
+  },
+  "keywords": [
+    "mostjs",
+    "rxjs",
+    "utils"
+  ],
+  "scripts": {
+    "build": "npm run build:commonjs && npm run build:es2015 && npm run build:umd",
+    "build:commonjs": "./node_modules/.bin/tsc -P cfg/tsconfig.commonjs.json",
+    "build:es2015": "./node_modules/.bin/tsc -P cfg/tsconfig.es2015.json",
+    "build:umd": "rollup -c --name mostUtils && uglifyjs dist/most-utils.js -o dist/most-utils.min.js",
+    "prepublish": "npm run build",
+    "preversion": "npm run build",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "./node_modules/.bin/tslint -p tsconfig.json -c tslint.json src/*.ts",
+    "test:unit": "./node_modules/.bin/mocha -r ts-node/register src/*.test.ts"
+  },
+  "dependencies": {
+    "@most/prelude": "^1.7.2",
+    "most-last": "^2.1.0"
+  },
+  "devDependencies": {
+    "@most/core": "^1.3.0",
+    "@most/types": "^1.0.0",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^9.6.47",
+    "@types/power-assert": "^1.5.0",
+    "mocha": "^6.0.2",
+    "power-assert": "^1.5.0",
+    "rollup": "^0.58.2",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-typescript2": "^0.13.0",
+    "ts-node": "^6.0.0",
+    "tslint": "^5.9.1",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.9.2",
+    "uglify-js": "^3.5.2"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "lib.es2015"
+  ],
+  "peerDependencies": {
+    "@most/core": "^1.2.3"
+  }
+}

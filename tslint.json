@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "tslint-config-standard"
+  ],
+  "rules": {
+    "no-use-before-declare": false,
+    "no-unused-variable": null,
+    "no-trailing-whitespace": false,
+    "one-variable-per-declaration": false,
+    "semicolon": [true, "always"],
+    "space-before-function-paren": false
+  }
+}
